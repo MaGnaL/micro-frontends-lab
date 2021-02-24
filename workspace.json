@@ -1,10 +1,394 @@
 {
-  
-  
   "version": 2,
-  
-  "projects": {},
+  "projects": {
+    "micro-host": {
+      "projectType": "application",
+      "root": "apps/micro-host",
+      "sourceRoot": "apps/micro-host/src",
+      "prefix": "micro-frontends-lab",
+      "targets": {
+        "build": {
+          "executor": "@angular-builders/custom-webpack:browser",
+          "options": {
+            "customWebpackConfig": {
+              "path": "apps/micro-host/webpack.config.ts"
+            },
+            "outputPath": "dist/apps/micro-host",
+            "index": "apps/micro-host/src/index.html",
+            "main": "apps/micro-host/src/main.ts",
+            "polyfills": "apps/micro-host/src/polyfills.ts",
+            "tsConfig": "apps/micro-host/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "apps/micro-host/src/favicon.ico",
+              "apps/micro-host/src/assets"
+            ],
+            "styles": [
+              "apps/micro-host/src/styles.css"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/micro-host/src/environments/environment.ts",
+                  "with": "apps/micro-host/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "executor": "@angular-builders/custom-webpack:dev-server",
+          "options": {
+            "browserTarget": "micro-host:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "micro-host:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "executor": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "micro-host:build"
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "apps/micro-host/src/**/*.ts",
+              "apps/micro-host/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": [
+            "coverage/apps/micro-host"
+          ],
+          "options": {
+            "jestConfig": "apps/micro-host/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "micro-host-e2e": {
+      "root": "apps/micro-host-e2e",
+      "sourceRoot": "apps/micro-host-e2e/src",
+      "projectType": "application",
+      "targets": {
+        "e2e": {
+          "executor": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/micro-host-e2e/cypress.json",
+            "tsConfig": "apps/micro-host-e2e/tsconfig.e2e.json",
+            "devServerTarget": "micro-host:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "micro-host:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "apps/micro-host-e2e/**/*.{js,ts}"
+            ]
+          }
+        }
+      }
+    },
+    "micro-remote1": {
+      "projectType": "application",
+      "root": "apps/micro-remote1",
+      "sourceRoot": "apps/micro-remote1/src",
+      "prefix": "micro-frontends-lab",
+      "targets": {
+        "build": {
+          "executor": "@angular-builders/custom-webpack:browser",
+          "options": {
+            "customWebpackConfig": {
+              "path": "apps/micro-remote1/webpack.config.ts"
+            },
+            "outputPath": "dist/apps/micro-remote1",
+            "index": "apps/micro-remote1/src/index.html",
+            "main": "apps/micro-remote1/src/main.ts",
+            "polyfills": "apps/micro-remote1/src/polyfills.ts",
+            "tsConfig": "apps/micro-remote1/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "apps/micro-remote1/src/favicon.ico",
+              "apps/micro-remote1/src/assets"
+            ],
+            "styles": [
+              "apps/micro-remote1/src/styles.css"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/micro-remote1/src/environments/environment.ts",
+                  "with": "apps/micro-remote1/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "executor": "@angular-builders/custom-webpack:dev-server",
+          "options": {
+            "browserTarget": "micro-remote1:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "micro-remote1:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "executor": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "micro-remote1:build"
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "apps/micro-remote1/src/**/*.ts",
+              "apps/micro-remote1/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": [
+            "coverage/apps/micro-remote1"
+          ],
+          "options": {
+            "jestConfig": "apps/micro-remote1/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "micro-remote1-e2e": {
+      "root": "apps/micro-remote1-e2e",
+      "sourceRoot": "apps/micro-remote1-e2e/src",
+      "projectType": "application",
+      "targets": {
+        "e2e": {
+          "executor": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/micro-remote1-e2e/cypress.json",
+            "tsConfig": "apps/micro-remote1-e2e/tsconfig.e2e.json",
+            "devServerTarget": "micro-remote1:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "micro-remote1:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "apps/micro-remote1-e2e/**/*.{js,ts}"
+            ]
+          }
+        }
+      }
+    },
+    "micro-remote2-wc": {
+      "projectType": "application",
+      "root": "apps/micro-remote2-wc",
+      "sourceRoot": "apps/micro-remote2-wc/src",
+      "prefix": "micro-frontends-lab",
+      "targets": {
+        "build": {
+          "executor": "@angular-builders/custom-webpack:browser",
+          "options": {
+            "customWebpackConfig": {
+              "path": "apps/micro-remote2-wc/webpack.config.ts"
+            },
+            "outputPath": "dist/apps/micro-remote2-wc",
+            "index": "apps/micro-remote2-wc/src/index.html",
+            "main": "apps/micro-remote2-wc/src/main.ts",
+            "polyfills": "apps/micro-remote2-wc/src/polyfills.ts",
+            "tsConfig": "apps/micro-remote2-wc/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "apps/micro-remote2-wc/src/favicon.ico",
+              "apps/micro-remote2-wc/src/assets"
+            ],
+            "styles": [
+              "apps/micro-remote2-wc/src/styles.css"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/micro-remote2-wc/src/environments/environment.ts",
+                  "with": "apps/micro-remote2-wc/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "executor": "@angular-builders/custom-webpack:dev-server",
+          "options": {
+            "browserTarget": "micro-remote2-wc:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "micro-remote2-wc:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "executor": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "micro-remote2-wc:build"
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "apps/micro-remote2-wc/src/**/*.ts",
+              "apps/micro-remote2-wc/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": [
+            "coverage/apps/micro-remote2-wc"
+          ],
+          "options": {
+            "jestConfig": "apps/micro-remote2-wc/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "micro-remote2-wc-e2e": {
+      "root": "apps/micro-remote2-wc-e2e",
+      "sourceRoot": "apps/micro-remote2-wc-e2e/src",
+      "projectType": "application",
+      "targets": {
+        "e2e": {
+          "executor": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/micro-remote2-wc-e2e/cypress.json",
+            "tsConfig": "apps/micro-remote2-wc-e2e/tsconfig.e2e.json",
+            "devServerTarget": "micro-remote2-wc:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "micro-remote2-wc:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "apps/micro-remote2-wc-e2e/**/*.{js,ts}"
+            ]
+          }
+        }
+      }
+    }
+  },
   "cli": {
-    "defaultCollection": "@nrwl/workspace"
-  }
+    "defaultCollection": "@nrwl/angular"
+  },
+  "generators": {
+    "@nrwl/angular:application": {
+      "style": "css",
+      "linter": "eslint",
+      "unitTestRunner": "jest",
+      "e2eTestRunner": "cypress"
+    },
+    "@nrwl/angular:library": {
+      "style": "css",
+      "linter": "eslint",
+      "unitTestRunner": "jest"
+    },
+    "@nrwl/angular:component": {
+      "style": "css"
+    }
+  },
+  "defaultProject": "micro-host"
 }

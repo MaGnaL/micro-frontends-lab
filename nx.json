@@ -1,14 +1,9 @@
 {
   "npmScope": "micro-frontends-lab",
-  "affected": {
-    "defaultBase": "master"
-  },
+  "affected": { "defaultBase": "master" },
   "implicitDependencies": {
     "workspace.json": "*",
-    "package.json": {
-      "dependencies": "*",
-      "devDependencies": "*"
-    },
+    "package.json": { "dependencies": "*", "devDependencies": "*" },
     "tsconfig.base.json": "*",
     "tslint.json": "*",
     ".eslintrc.json": "*",
@@ -17,15 +12,21 @@
   "tasksRunnerOptions": {
     "default": {
       "runner": "@nrwl/workspace/tasks-runners/default",
-      "options": {
-        "cacheableOperations": [
-          "build",
-          "lint",
-          "test",
-          "e2e"
-        ]
-      }
+      "options": { "cacheableOperations": ["build", "lint", "test", "e2e"] }
     }
   },
-  "projects": {}
+  "projects": {
+    "micro-host": { "tags": [] },
+    "micro-host-e2e": { "tags": [], "implicitDependencies": ["micro-host"] },
+    "micro-remote1": { "tags": [] },
+    "micro-remote1-e2e": {
+      "tags": [],
+      "implicitDependencies": ["micro-remote1"]
+    },
+    "micro-remote2-wc": { "tags": [] },
+    "micro-remote2-wc-e2e": {
+      "tags": [],
+      "implicitDependencies": ["micro-remote2-wc"]
+    }
+  }
 }
